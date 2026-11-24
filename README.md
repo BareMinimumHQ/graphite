@@ -72,7 +72,7 @@ Each render starts from the brush defaults. Pass your settings again on the next
 
 ### Pencil grades
 
-![Nineteen graphite swatches, from 10H through HB to 8B.](showcase/pencil-grades.webp)
+![Nineteen graphite swatches, from 10H through HB to 8B.](https://raw.githubusercontent.com/BareMinimumHQ/graphite/v0.1.0/showcase/pencil-grades.webp)
 
 Only the grade changes between swatches. Use integers from `-10` (10H) through `0` (HB) to `8` (8B). Pencil calibrates shading at the default drawing settings. Pressure, paper and other settings also affect the tone.
 
@@ -80,7 +80,7 @@ Only the grade changes between swatches. Use integers from `-10` (10H) through `
 
 The same bear SVG with six Pencil presets.
 
-![Six renderings of the same bear on white, from a thin outline to coloured hatching.](showcase/bear-styles.webp)
+![Six renderings of the same bear on white, from a thin outline to coloured hatching.](https://raw.githubusercontent.com/BareMinimumHQ/graphite/v0.1.0/showcase/bear-styles.webp)
 
 <details>
 <summary>Copy the six render presets in sheet order</summary>
