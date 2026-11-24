@@ -1,0 +1,7 @@
+# Local research and publishing notes.
+/TODO.md
+/src/generated/
+/dist/
+/node_modules/
+/*.tgz
+/studies/
