@@ -302,7 +302,8 @@ void main() {
   Hatch h;
   float a = radians(shading_angle);
   h.direction = vec2(cos(a), -sin(a));
-  h.along = (stroke + t - float(pass) * .5 - hash(vec2(id, 43.0))) * STROKE_LENGTH;
+  float start = stroke - float(pass) * .5 - hash(vec2(id, 43.0));
+  h.along = (start + t) * STROKE_LENGTH;
   float strokeId = stroke * 2.0 + float(pass);
 
   // Where the line is here, plus this stroke's own small tilt and pressure.
@@ -317,7 +318,7 @@ void main() {
   // wedge of paper opens between them towards the other end. Neighbouring lanes share their sweeps
   // in bands SWEEP_BAND wide, staggered so the turns don't line up across the shape. The stroke's
   // middle decides its sweep, so it stays whole.
-  float middle = h.along + (.5 - t) * STROKE_LENGTH;
+  float middle = (start + .5) * STROKE_LENGTH;
   float band = floor(((id + .5) * spacing) / SWEEP_BAND);
   float stagger = hash(vec2(band, 307.0)) * SWEEP_LENGTH;
   float sweepIndex = floor((middle + stagger) / SWEEP_LENGTH);
@@ -359,12 +360,13 @@ void main() {
 
   // Skip a stroke far outside the shape: test its lane's place at its start, middle and end.
   // The same three points give the stroke its time in the drawing: the shading order of its start
-  // and end (1 is outside the shape, where nothing is scheduled).
+  // and end (1 is outside the shape, where nothing is scheduled). Compute these samples
+  // from the stroke start so roundoff cannot make vertices of one stroke disagree about culling.
   float nearest = 1e4;
   float order[3];
   for (int i = 0; i <= 2; i++) {
     Hatch at = h;
-    at.along += (float(i) * .5 - t) * STROKE_LENGTH;
+    at.along = (start + float(i) * .5) * STROKE_LENGTH;
     vec2 uv = fieldPoint(at, (id + .5) * spacing) / uFieldSize;
     nearest = min(nearest, texture(uFar, uv).r * 255.0);
     order[i] = texture(uField, uv).a;
