@@ -1,0 +1,61 @@
+{
+  "name": "@bareminimum/graphite",
+  "version": "0.1.0",
+  "description": "A browser library for outlining and shading SVGs with brushes.",
+  "keywords": [
+    "svg",
+    "pencil",
+    "sketch",
+    "graphite",
+    "webgl",
+    "shader",
+    "drawing"
+  ],
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./pencil": {
+      "types": "./dist/brushes/pencil/index.d.ts",
+      "import": "./dist/brushes/pencil/index.js"
+    },
+    "./guides": {
+      "types": "./dist/core/guides.d.ts",
+      "import": "./dist/core/guides.js"
+    }
+  },
+  "scripts": {
+    "build": "node generate-shaders.mjs && tsc -p tsconfig.json",
+    "typecheck": "node generate-shaders.mjs && tsc -p tsconfig.json --noEmit",
+    "test": "node --test test/*.test.mjs",
+    "prepack": "node --input-type=module -e \"import { rmSync } from 'node:fs'; rmSync('dist', { recursive: true, force: true })\" && npm run build",
+    "pretest": "npm run build",
+    "dev": "node generate-shaders.mjs && tsc -p tsconfig.json --watch"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22.12"
+  },
+  "dependencies": {
+    "path-data-parser": "^0.1.0",
+    "svg-path-properties": "^2.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BareMinimumHQ/graphite.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT"
+}
