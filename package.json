@@ -1,6 +1,6 @@
 {
   "name": "@bareminimum/graphite",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A browser library for outlining and shading SVGs with brushes.",
   "keywords": [
     "svg",
