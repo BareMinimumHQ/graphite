@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/BareMinimumHQ/graphite/compare/v0.1.1...v0.1.2) (2026-11-24)
+
+
+### Bug Fixes
+
+* keep pencil stroke culling consistent across vertices ([#5](https://github.com/BareMinimumHQ/graphite/issues/5)) ([75401c5](https://github.com/BareMinimumHQ/graphite/commit/75401c51137c66483e4305d604905ddc8083f1d2))
+
 ## [0.1.1](https://github.com/BareMinimumHQ/graphite/compare/v0.1.0...v0.1.1) (2026-11-24)
 
 
